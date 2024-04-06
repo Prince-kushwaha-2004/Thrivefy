@@ -1,0 +1,212 @@
+<% layout("layouts/boilerplate.ejs") %>
+  <body>
+    <%- include("includes/usernavbar.ejs")%>
+   <br><br>
+   <h2 style="text-align: center;">HELLO <span style=" font-family: Kaushan Script;font-weight: 600;font-style: normal;"><%=data.username%></span>✨ Welcome to
+     <span style=" font-family: Kaushan Script;font-weight: 600;font-style: normal;">Thrivefy🏥</span></h2>
+    <header class="section__container header__container">
+       
+      <div class="header__content">
+        <p class="section__subheader">Choose your plan</p>
+        <h2 class="section__header">Make your best treatment plan with us</h2>
+        <p class="title">Select or Search your best plans</p>
+        <form>
+          <div class="form__group">
+            <input type="text" />
+            <span><i class="ri-search-line"></i></span>
+          </div>
+          <p class="hashtags">
+            #Yearly Check-ups #Blood Test #MRI #CT-Scan #Pregnency check-up
+            #Others
+          </p>
+          <button class="btn">Find</button>
+        </form>
+      </div>
+      <div class="header__image">
+        <img src="https://cdn.dribbble.com/users/980101/screenshots/3395875/doctor_2.gif" alt="header" />
+      </div>
+    </header>
+    <%- include("includes/imgslider.ejs")%>
+    <section class="story">
+      <div class="section__container story__container">
+        <div class="story__image">
+          <img src="assets/img-07.avif" alt="story" />
+        </div>
+        <div class="story__content">
+          <p class="section__subheader">A story about a service</p>
+          <h2 class="section__header">
+            Availability of Hospital-rooms nearest to you
+          </h2>
+          <p class="title">
+            <span><i class="ri-calendar-2-fill"></i> March-28-2024</span>
+            <span><i class="ri-user-3-fill"></i>Tushar Kudesia</span>
+          </p>
+          <p class="description">
+            Experience the magic of technology with Medicure this time !! Our
+            expertly curated tech will take you on an affordable and easily
+            accessible journey throughout your medical hardships. Discover the
+            availability of Rooms, Wards,ICUs, Emergency wards with just a click
+            and choose the right place for you ✅.<br /><br />MediCure, your
+            trusted Medical partner, ensures a seamless and well-planned
+            itinerary, including accommodations, transportation, and expert
+            guides. Book your medical aids with MediCure today and pull you and
+            your loved ones towards the Land of Smiles 😊.
+          </p>
+          <!-- <a href="#">Read More</a> -->
+          <button><button class="btn">Check rooms</button></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container price__container">
+      <p class="section__subheader">Pricing</p>
+      <h2 class="section__header">Check your Medical plans</h2>
+      <div class="price__grid">
+        <div class="price__card">
+          <img src="assets/img-02.webp" alt="price" />
+          <div class="details">
+            <!-- <span></span> -->
+            <span>$45/Person</span>
+          </div>
+          <h4>Book your routine yearly packages</h4>
+          <div class="price__card__footer">
+            <select name="Hospital">
+              <option value="Mumbai">Hospital Name</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Delhi">Delhi</option>
+              <span class="location"> </span>
+            </select>
+            <span class="rating"><i class="ri-star-fill"></i> 5.0</span>
+          </div>
+        </div>
+        <div class="price__card">
+          <img src="assets/ambulance.webp" alt="price" />
+          <div class="details">
+            <span>$405/Person</span>
+          </div>
+          <h4>Get the fastest ambulance service at your doorstep</h4>
+          <div class="price__card__footer">
+            <select name="Hospital">
+              <option value="Mumbai">Hospital Name</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Delhi">Delhi</option>
+              <span class="location"> </span>
+            </select>
+            <span class="rating"><i class="ri-star-fill"></i> 4.8</span>
+          </div>
+        </div>
+        <div class="price__card">
+          <img src="assets/img-06.avif" alt="price" />
+          <div class="details">
+            <span>$10-shipping charges(For Home-Delivery)</span>
+          </div>
+          <h4>One-stop solution for all your pharmacy needs</h4>
+          <div class="price__card__footer">
+            <select name="Hospital">
+              <option value="Mumbai">Hospital Name</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Delhi">Delhi</option>
+              <span class="location"> </span>
+            </select>
+            <span class="rating"><i class="ri-star-fill"></i> 4.6</span>
+          </div>
+        </div>
+        <div class="price__card">
+          <img src="assets/img-04.avif" alt="price" />
+          <div class="details">
+            <span>$400/Person</span>
+          </div>
+          <h4>Book an Appointment for personalised treatement from experts</h4>
+          <div class="price__card__footer">
+            <select name="Hospital">
+              <option value="Mumbai">Hospital Name</option>
+              <option value="Varanasi">Varanasi</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Lucknow">Lucknow</option>
+              <option value="Delhi">Delhi</option>
+              <span class="location"> </span>
+            </select>
+            <span class="rating"><i class="ri-star-fill"></i> 4.9</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="client">
+      <div class="section__container client__container">
+        <p class="section__subheader">Testimonials</p>
+        <h2 class="section__header">What our clients say about us</h2>
+        <div class="client__grid">
+          <div class="client__card">
+            <img src="assets/client-1.jpg" alt="client" />
+            <h4>Exceptional Service and Support</h4>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Quibusdam ipsa dicta laudantium magni optio doloribus libero
+              nihil. Ullam fugit maxime qui sequi illo. Asperiores, perspiciatis
+              debitis. Delectus excepturi facilis distinctio.
+            </p>
+            <span><i class="ri-double-quotes-l"></i></span>
+          </div>
+          <div class="client__card">
+            <img src="assets/client-2.jpg" alt="client" />
+            <h4>Cultural Immersion at its Best</h4>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora,
+              nam labore veniam a totam provident itaque nostrum ad repellat
+              velit libero aperiam ut magnam distinctio.
+            </p>
+            <span><i class="ri-double-quotes-l"></i></span>
+          </div>
+          <div class="client__card">
+            <img src="assets/client-3.jpg" alt="client" />
+            <h4>Memories that Last a Lifetime</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Architecto hic aperiam beatae quam tenetur temporibus quidem quia
+              id tempore quas culpa, illo aspernatur est corrupti pariatur eius
+              deserunt fuga atque eligendi nisi maiores nemo modi!
+            </p>
+            <span><i class="ri-double-quotes-l"></i></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section__container contact__container">
+      <p class="section__subheader">Contact us</p>
+      <h2 class="section__header">Feel free to ask anything to us</h2>
+      <form>
+        <input type="text" placeholder="Full Name" />
+        <input type="text" placeholder="Phone Number" />
+        <input type="text" placeholder="Country" />
+        <input type="text" placeholder="Ask us anything" />
+        <button class="btn">Send Query</button>
+      </form>
+    </section>
+
+    <section class="banner">
+      <div class="section__container banner__container">
+        <h4>
+          Subscribe to our newsletter and receive exclusive offers every week
+        </h4>
+        <form>
+          <input type="text" placeholder="Enter your email" />
+          <button>Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <%- include("includes/footer.ejs")%>
+
+        
+
+ 
+  </body>
+

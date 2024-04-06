@@ -1,0 +1,88 @@
+<% layout("layouts/boilerplate.ejs") %>
+<head>
+    <style>
+        body{
+  width: 100%;
+  height: 100vh;
+  background: url(https://static.vecteezy.com/system/resources/previews/002/204/194/original/technology-background-design-in-white-color-free-vector.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+.signup{
+    background-color: rgba(85, 161, 243, 0.116);
+  border: 2px solid rgb(148, 208, 255);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  margin-top: 1rem;
+  padding: 2rem;
+}
+
+    </style>
+</head>
+  <body>
+    <%- include("includes/navbar.ejs")%>
+
+    <div class="row">
+        <div class="col-6 offset-3 signup">
+            <h1>Create Your acount</h1><br>
+            <form action="/signup" method="POST" novalidate class="needs-validation">
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="username" class="form-label">Username</label>
+                        <input  id="username" name="username" class="form-control" placeholder="Abc" required>
+                
+                         <div class="invalid-feedback">Please enter a your name</div>
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" placeholder="abc@gmail.com" required>
+                        <div class="valid-feedback">looks good</div>
+                    <div class="invalid-feedback">Please enter your email id</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea name="address" id="description" class="form-control"
+                        placeholder="Address" required></textarea>
+                        <div class="valid-feedback">It's good</div>
+                        <div class="invalid-feedback">Please enter your address</div>
+                </div>
+                <div class="mb-3">
+                    <label for="url" class="form-label">Your image url</label>
+                    <input type="text" id="url" name="url" class="form-control" placeholder="Image link/url">
+                </div>
+                <div class="mb-3">
+                    <label for="mobno" class="form-label">Mobile No</label>
+                    <input type="number" id="mobno" name="mobno" class="form-control" placeholder="xxxxxxxxxx" required>
+                    <div class="valid-feedback">looks good</div>
+                    <div class="invalid-feedback">Please enter your mobile no</div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-6">
+                        <label for="password1" class="form-label">Password</label>
+                        <input  id="password1" name="password1" class="form-control" placeholder="Password" required>
+                
+                         <div class="invalid-feedback">Please enter a valid password</div>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="password2" class="form-label">Conform Password</label>
+                        <input type="password" name="password2" id="password2" class="form-control" placeholder="Conform Password" required>
+                    <div class="invalid-feedback">Please enter a valid password</div>
+                    </div>
+                </div>
+                
+
+                <button class="btn btn-dark add-btn">Create acount</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
+<br><br>
+
+
+
+
+
+    <%- include("includes/footer.ejs")%>
+  </body>

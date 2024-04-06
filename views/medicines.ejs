@@ -1,0 +1,65 @@
+<% layout("layouts/medboilerplate.ejs") %>
+  <body>
+    <%- include("includes/usernavbar.ejs")%>
+
+    <header class="section__container header__container center">
+        <div class="header__content">
+          <p class="title">Search your medicine here!!</p>
+          <form>
+            <div class="form__group">
+              <input type="text" id="medicinesearch" oninput="filterCalculators()">
+              <span><i class="ri-search-line"></i></span>
+            </div>
+      
+          </form>
+        </div>
+        </header>
+        <div class="medicines">
+            
+            <%for(medicine of data.datas.result){%>
+                <div class="medicine" id="<%=medicine.name%>">
+                    
+                    <img src="<%=medicine.image_url%>" alt="medicine">
+
+                    <div class="data">
+                        <div class="info">
+                            <p id="medicinename"><%=medicine.name%></p>
+                            <p>⭐<%=medicine.rating%></p>
+                        </div>
+                        <p>Used for: <%=medicine.use_for%></p>
+                        <p>$<%=medicine.price%></p>
+                        <button> Add to cart <i class="ri-shopping-cart-fill"></i></button>
+                    </div>
+                  
+                </div>
+                
+                
+        <%}%>
+        </div>
+       
+
+
+
+
+    <%- include("includes/footer.ejs")%>
+
+
+
+    <div class="loginform">
+        <form action="http://localhost:8080/user" method="POST">
+            <h2>LOGIN</h2>
+            <img src="assets/logo.png" alt="img">
+            <input type="text" placeholder="Email" name="email" id="email"><br>
+            <input type="password" placeholder="Password" name="password" id="password"><br>
+            <button class="btn">Login</button>
+        </form>
+        <div class="signup-link">
+          Don't have an account? &nbsp;<a href="#">Sign up</a>
+        </div>
+    </div>
+    <div class="close">
+
+        
+
+ 
+  </body>
