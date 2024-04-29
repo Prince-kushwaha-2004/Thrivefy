@@ -4,7 +4,7 @@
     align-items: center;
 }
 .medicines img{
-    width: 15rem;
+    width: 12rem;
 }
 .medicines{
     display: flex;
@@ -18,7 +18,7 @@
     justify-content: space-between;
     margin: 2rem;
     width: 17rem;
-    height: 25rem;
+    height: 27rem;
     border-radius: 1rem;
     padding: 1rem;
     box-shadow: 2px 2px 5px black;

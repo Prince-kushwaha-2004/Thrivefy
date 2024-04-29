@@ -1,0 +1,51 @@
+<% layout("layouts/boilerplate.ejs") %>
+<head>
+    <style>
+        body{
+  width: 100%;
+  height: 100vh;
+  background: url(https://static.vecteezy.com/system/resources/previews/002/204/194/original/technology-background-design-in-white-color-free-vector.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+.signup{
+    background-color: rgba(85, 161, 243, 0.116);
+  border: 2px solid rgb(148, 208, 255);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  margin-top: 1rem;
+  padding: 2rem;
+}
+
+    </style>
+</head>
+  <body>
+    <%- include("includes/navbar.ejs")%>
+
+    <div class="row">
+        <div class="col-6 offset-3 signup">
+            <h1>Login with your Hospital account</h1><br>
+            <form action="/hospitals" method="POST" novalidate class="needs-validation">
+                <div class="mb-3 col-md-8">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder=hospital1@gmail.com" required>
+                    <div class="valid-feedback">looks good</div>
+                <div class="invalid-feedback">Please enter your email id</div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control"  required>
+                </div>
+               
+                <button class="btn btn-dark add-btn">Log in</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
+        
+
+
+
+
+<%- include("includes/footer.ejs")%>
+</body>

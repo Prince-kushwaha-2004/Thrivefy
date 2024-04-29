@@ -1,0 +1,275 @@
+<% layout("layouts/boilerplate.ejs") %>
+<head>
+    <style>
+        body{
+            width: 100%;
+             height: 100%;
+            background: url(https://static.vecteezy.com/system/resources/previews/002/204/194/original/technology-background-design-in-white-color-free-vector.jpg);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .hospital_info{
+            display: flex;
+            width: 70%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 5px gray;
+            border-radius: 2rem;
+            padding: 2rem;
+            justify-content: space-around;
+            background-color: rgba(137, 220, 239, 0.34);
+            backdrop-filter: blur(10px);
+            
+        }
+        .hospital_contect{
+            display: flex;
+        }
+        .hospital_info img{
+            width: 5rem;
+        }
+        .bedinfo{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 2rem;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .bed{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .bed input{
+            width: 3.5rem;
+            margin: .3rem;
+            padding: .3rem;
+            border-radius: 1rem;
+        }
+        .doctors{
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-wrap: wrap;
+        }
+        .doctor_info{
+            display: flex;
+            margin: 2rem;
+            border: 2px solid black;
+            width: 40rem;
+            border-radius: 2rem;
+            padding: 2rem;
+            justify-content: space-around;
+            background-color: rgba(98, 231, 122, 0.34);
+            color:black;
+        }
+        .doctor_info img{
+            width: 5rem;
+            border-radius: 50%;
+            
+        }
+        .dr{
+            display: flex;
+            flex-direction: column;
+        }
+        .doctor_info label{
+            font-size: 1.5rem;
+        }
+        .doctor_info input{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .submit{
+            border: none;
+            border-radius: 2rem;
+            background-color: rgb(64, 148, 244);
+            color: white;
+            padding: .5rem 1rem;
+            font-size: 1.2rem;
+            transition: all linear .2s;
+        }
+        .submit:hover{
+            box-shadow: 4px 4px 4px black;
+            background-color: rgb(8, 63, 243);
+           
+      
+        }
+        .Ambulence_service{
+            display: flex;
+            margin: 2rem;
+            margin: 3rem;
+            border: 2px solid black;
+            border-radius: 2rem;
+            padding: 2rem;
+            justify-content: space-around;
+            background-color: rgba(189, 98, 231, 0.34);
+            color:black;
+        }
+        .Ambulence_service label{
+            font-size: 2rem;
+        }
+        .Ambulence_service input[type='radio']{
+    width: 2rem;
+    height: 2rem;
+}
+     
+  #mapContainer {
+    height: 25rem;
+    width: 70rem;
+    margin-bottom: 10px;
+    border: 2px solid black;
+  }
+    </style>
+</head>
+<body>
+    <%- include("includes/navbar.ejs")%>
+    <br>
+    <div class="hospital_info">
+        <img src="/assets/logo.png" alt="img">
+        <h1><%= hospitalData.name %></h1>
+        <p><%= hospitalData.address %></p>
+        <div class="hospital_contect">
+            <p><%= hospitalData.mobile_no %></p>,&nbsp;<p><%= hospitalData.email %></p>
+        </div>
+    </div>
+    <br>
+    <div id="mapContainer"></div>
+
+    <br>
+    <form action="/hospitals/<%=hospitalData.email%>?_method=PUT" method="POST">
+        <div class="bedinfo">
+            <div class="normalbed bed">
+                <h3>🛏️ Total Bed Availavle</h3>
+                <input type="number" name="norm_bed" id="norm_bed" value="<%= hospitalData.normal_bed_available %>">
+            </div>
+            <div class="emergencybed bed">
+                <h3>🛏️ Total Emergency Bed Availavle</h3>
+                <input type="number" name="emer_bed" id="emer_bed" value="<%= hospitalData.emergency_bed_available %>">
+            </div>
+        </div>
+        <br>
+        <!-- --------------for redio button control -->
+        <% let x,y;
+        if(hospitalData.ambulance_service_available==1){
+             x="checked";
+             y=""
+
+        }else{
+            y="checked"
+             x=""
+        }%>
+        <!-- ----------------------------------------------- -->
+        <div class="Ambulence_service">
+            <h3>
+                🚑 Ambulence service : &nbsp; <label for="yes">Available</label>
+                <input type="radio" id="yes" value="1" name="ambulance_service_available" <%=x%>>
+                <label for="no">Not Available</label>
+                <input type="radio" id="no" value="0" name="ambulance_service_available" <%=y%>>
+
+            </h3>
+            
+        </div>
+
+       
+
+        <div class="doctors">
+            <%for(data of doctorsData){%>
+                <div class="doctor_info">
+                    <img src="<%=data.image_url%>" alt="img">
+                    <div class="dr">
+                        <h5><%=data.name%></h5>
+                        <p><%=data.specialization%></p>
+                        <p><%=data.mobile_no%></p>
+                        <p><%=data.email%></p>
+                    </div>
+                    <!-- <form action=""> -->
+                        <%if(data.availability==1){
+                            x="checked";
+                           y=""
+
+                        }else{
+                            y="checked"
+                             x=""
+                         }%>
+                         <div class="radio">
+                            <div>
+                                <label for="yes">Available</label>
+                                <input type="radio" id="yes" value="1" name=" <%=data.doctor_id%>_availability" <%=x%>>
+                             </div>
+                             <br>
+                            <div>
+                                <label for="no">Not Available</label>
+                                <input type="radio" id="no" value="0"name=" <%=data.doctor_id%>_availability"<%=y%>>
+                            </div>
+                            
+                         </div>
+                        
+        
+                    <!-- </form> -->
+                    
+                </div>
+                <% } %>
+            
+            
+            
+        </div>
+        <button class="submit">Submit</button>
+    </form>
+    
+    <%- include("includes/footer.ejs")%>
+
+    
+      
+    <script src="https://www.bing.com/api/maps/mapcontrol?key=AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R" async defer></script>
+    <script src="https://www.bing.com/api/maps/mapcontrol?key=AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R&callback=loadMapScenario" async defer></script>
+    <script>
+        let map;
+
+
+function initMap() {
+    const longitude = <%= hospitalData.longitude %>;
+    const latitude = <%= hospitalData.latitude %>;
+    map = new Microsoft.Maps.Map('#mapContainer', {
+        credentials: 'AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R',
+        center: new Microsoft.Maps.Location(latitude, longitude), // Coordinates for New Delhi, India
+        zoom: 10
+    });
+
+    // Create a pushpin at New Delhi
+    var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(latitude, longitude), {
+        title: '<%= hospitalData.name %>', // Optional title for the pushpin
+        icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png' 
+    });
+
+    // Add the pushpin to the map
+    map.entities.push(pushpin);
+}
+function loadMapScenario() {
+    // Wait for the Bing Maps API script to load
+    if (typeof Microsoft !== 'undefined') {
+        // Initialize the map
+        initMap();
+    } else {
+        // Handle script loading error
+        console.error('Bing Maps API script failed to load.');
+    }
+}
+    </script>
+</body>
+</html>
+
+
+
+

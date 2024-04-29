@@ -1,0 +1,134 @@
+<% layout("layouts/boilerplate.ejs") %>
+<head>
+    <style>
+        .header{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        #mapContainer{
+            width: 70%;
+            height: 30rem;
+            border: 2px solid black;
+        }
+        .hospitals{
+            width: 100%;
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hospital{
+            width: 70%;
+            display: flex;
+            /* justify-content: space-around; */
+            border: 2px solid black;
+            padding: 1rem;
+            border-radius: 2rem;
+            margin-top: 1rem;
+        }
+        .info1{
+            width: 60%;
+        }
+        .info2{
+            width: 25%;
+        }
+        .icons{
+            width: 15%;
+
+        }
+        .icons i{
+            font-size: 3rem;
+            color: rgb(42, 97, 250);
+            transition: all linear .3s;
+           
+        }
+        .icons a{
+            text-decoration: none;
+        }
+        .icons i:hover{
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <%- include("includes/navbar.ejs")%>
+    <div class="header">
+        <h1>Find Available Hospitals near You!!</h1>
+        <div id="mapContainer"></div>
+    </div>
+    <div class="hospitals">
+        <%for(hospital of data){%>
+            <div class="hospital">
+                <div class="info1">
+                    <h3><%=hospital.name%></h3>
+                    <p><%=hospital.address%></p>
+                </div>
+                <div class="info2">
+                    <p><%=hospital.mobile_no%></p>
+                    <p><%=hospital.email%></p>
+                </div>
+                <div class="icons">
+                    <a href="/hospitals/<%=hospital.email%>"><i class="ri-global-line"></i></a>
+                    <i class="ri-direction-fill"></i>
+                </div>
+            </div>
+            
+    <%}%>
+        
+      
+
+
+
+
+    <%- include("includes/footer.ejs")%>
+    <script src="https://www.bing.com/api/maps/mapcontrol?key=AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R" async defer></script>
+    <script src="https://www.bing.com/api/maps/mapcontrol?key=AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R&callback=loadMapScenario" async defer></script>
+ 
+    <script>
+        let map;
+        function initMap() {
+    map = new Microsoft.Maps.Map('#mapContainer', {
+        credentials: 'AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R', // Optional, if using a session key
+        center: new Microsoft.Maps.Location(28.7041, 77.1025), // Example: Seattle coordinates
+        zoom: 10 // Example zoom level
+    });
+
+     // Define locations for Ghaziabad, Delhi, and Noida
+     var locations = [
+        { name: 'MedixCare Hospital', coordinates: new Microsoft.Maps.Location(28.539500, 77.391000) },
+        { name: 'Lifespan Medical Center', coordinates: new Microsoft.Maps.Location(28.679200, 77.412600) },
+        { name: 'NovaHealth Clinic', coordinates: new Microsoft.Maps.Location(28.613900, 77.209000) },
+        { name: 'CityCare Hospital', coordinates: new Microsoft.Maps.Location(77.520900, 28.770400) },
+        { name: 'Wellness Community Hospital', coordinates: new Microsoft.Maps.Location(28.535500,74.391000 ) },
+        { name: 'CarePoint Medical Center', coordinates: new Microsoft.Maps.Location(28.669200, 77.512600) },
+    ];
+
+    // Loop through locations array to create pushpins
+    locations.forEach(function(location) {
+        var pushpin = new Microsoft.Maps.Pushpin(location.coordinates, {
+            title: location.name,
+            icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png' // Customize pushpin color if desired
+        });
+        map.entities.push(pushpin); // Add pushpin to the map
+    })
+}
+
+function loadMapScenario() {
+    // Wait for the Bing Maps API script to load
+    if (typeof Microsoft !== 'undefined') {
+        // Initialize the map
+        initMap();
+    } else {
+        // Handle script loading error
+        console.error('Bing Maps API script failed to load.');
+    }
+}
+    </script>
+</body>
+</html>
