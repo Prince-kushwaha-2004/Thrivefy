@@ -213,10 +213,22 @@ app.post("/hospitals", (req, res) => {
         connection.query(q, (error, result) => {
             if (error) res.send("hospital not found");
             let data = result;
+            console.log(data);
             res.render("findhospital.ejs", { data })
 
         })
     } catch (error) {
         console.log("error found");
     }
+    })
+
+    //routes section
+    app.get("/routes/:longitude/:latitude",(req,res)=>{
+      data=req.params;
+      res.render("route.ejs",{data});
+    })
+
+    //create hospital account
+    app.get("signup/hospital",(req,res)=>{
+      res.send("hello")
     })

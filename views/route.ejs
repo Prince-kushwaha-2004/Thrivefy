@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>your route</title>
+  <style>
+    body{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 255, 255, 0.416);
+    }
+    #map {
+      height: 400px;
+      width: 80%;
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+    <h1>Your destination route!!</h1><br><br>
+    
+    <div id="map"></div>
+  
+
+  <script src="https://www.bing.com/api/maps/mapcontrol?key=AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R"></script>
+  <script>
+    let map;
+
+    function initMap() {
+      map = new Microsoft.Maps.Map('#map', {
+        credentials: 'YAmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R', // Replace with your actual API key
+        center: new Microsoft.Maps.Location(47.6062, -122.3321), // Default center (Seattle)
+        zoom: 12 // Default zoom level
+      });
+
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const userLocation = new Microsoft.Maps.Location(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+
+          map.setView({
+            center: userLocation,
+            zoom: 12
+          });
+
+          const userPin = new Microsoft.Maps.Pushpin(userLocation);
+          map.entities.push(userPin);
+
+          const destination = new Microsoft.Maps.Location(<0%=data.latitude%>, <%=data.longitude%>); // Replace with destination coordinates
+          calculateRoute(userLocation, destination);
+        },
+        error => {
+          console.error('Error getting user location:', error);
+        }
+      );
+    }
+
+    function calculateRoute(startLocation, endLocation) {
+      Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+        const directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+
+        directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
+
+        const waypoint1 = new Microsoft.Maps.Directions.Waypoint({ location: startLocation });
+        const waypoint2 = new Microsoft.Maps.Directions.Waypoint({ location: endLocation });
+
+        directionsManager.addWaypoint(waypoint1);
+        directionsManager.addWaypoint(waypoint2);
+
+        directionsManager.setRenderOptions({ itineraryContainer: '#directionsPanel' });
+        directionsManager.calculateDirections();
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initMap);
+  </script>
+</body>
+</html>
+
+
+

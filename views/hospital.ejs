@@ -239,15 +239,15 @@
 
 
 function initMap() {
-    const longitude = <%= hospitalData.longitude %>;
-    const latitude = <%= hospitalData.latitude %>;
+    //geting cordinates from data
+     longitude = <%= hospitalData.longitude %>;
+        latitude = <%= hospitalData.latitude %>;
     map = new Microsoft.Maps.Map('#mapContainer', {
         credentials: 'AmxsQuW5aIWs2UPRaOxe90Aehr0Tg6DbVbRcrjJE6LRLLx0pYyYJ-1M69u85dj6R',
-        center: new Microsoft.Maps.Location(latitude, longitude), // Coordinates for New Delhi, India
+        center: new Microsoft.Maps.Location(latitude, longitude),
         zoom: 10
     });
 
-    // Create a pushpin at New Delhi
     var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(latitude, longitude), {
         title: '<%= hospitalData.name %>', // Optional title for the pushpin
         icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png' 
